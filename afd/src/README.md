@@ -1,3 +1,9 @@
+##### Escuela: Universidad Politécnica de San Luis Potosí
+##### Materia: Teoria computacional
+##### Profesor: González Ibarra Juan Carlos
+##### Alumno: Rodríguez Abella David Ulises 
+##### Matricula: 170647
+##### Carrera: Ingeniería en Tecnologías de la Información
 ## Rust Program Finite Automaton
 
   <li>Dentro de los usos que se le pueden dar a las máquinas de estados, y en particular a los AFD, está el reconocimiento de cadenas. Para realizar este reconocimiento en forma precisa y automatizada, el mismo puede implementarse en cualquier lenguaje de programación.

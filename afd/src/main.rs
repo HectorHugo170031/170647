@@ -8,7 +8,7 @@
  *  Matricula: 170647
  *  
  *  Escrito:       06/10/2020
- *  Ultima actualización:  06/10/2020
+ *  Ultima actualización:  07/10/2020
  *----------------------------------------------------------------------*/
 //Dependencia para expresiones regulares
 extern crate regex;
@@ -25,10 +25,9 @@ fn caracter(character: char) -> i32 {
     let mut Fin="";
     let digito = Regex::new(r"[0-9]").unwrap();
     let operador =  Regex::new(r"(\+|\-|\*|/)").unwrap();
-    let mut s = String::from("");
-	s.push(character);
-
-	let caracterN: &str = &s[..];
+    let mut cadena = String::from("");
+    cadena.push(character);
+    let caracterN: &str = &cadena[..];
 
     //Se compara si es un digito
     if digito.is_match(caracterN){
@@ -75,13 +74,13 @@ fn body(){
 
 
 fn main(){
-    //Se crea un vector doble para utilizarlo como tabla de transiciones E=-100, A=-200 
+    //Se crea un vector doble para utilizarlo como tabla de transiciones E=69, A=65 de acuerdo al codigo ASCII 
     let tabla: Vec<Vec<i32>>;
     tabla = vec![
-                vec! [1,-100,-100],
-                vec! [-100,2,-100],
-                vec! [3,-100,-100],
-                vec! [-100,-100,-200]
+                vec! [1,69,69],
+                vec! [69,2,69],
+                vec! [3,69,69],
+                vec! [69,69,65]
             ];
     //Variables para imprimir los estados, simbolos y cadena 
     let mut estado: i32 = 0;
@@ -117,11 +116,12 @@ fn main(){
 
 
         //Si el valor obtenido es una E imprimimos cadena no valida
-        if estado==-100{
+        if estado==69{
             println! ("|    {}    |  {}    | Error |     {}       |",estadoSig,character,estado);
             body();
-            println! ("|              Cadena No Valida :(                   |");
+            println! ("|              Cadena no valida                      |");
             println! ("+----------------------------------------------------+");
+	    process::exit(0x0100);
         }
 	//Mandamos a llamar la funcion contenido la cual va a imprimir todo lo que debe contener la tabla
         contenido(estadoSig,character,&simbolo,estado);
@@ -130,6 +130,7 @@ fn main(){
 	if estado>3{
 	   println! ("|              Cadena no valida                    |");
 	   println! ("+----------------------------------------------------+");
+	   process::exit(0x0100);
 	}
 	//si el estado es 3 es una cadena de aceptacion
 	if estado==3{
@@ -137,6 +138,7 @@ fn main(){
 	   body();
 	   println! ("|                Cadena valida                       |");
 	   println! ("+----------------------------------------------------+");
+	   process::exit(0x0100);
 	}  
     }  
 }
